@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 import { COLORS } from '../../viables/viables';
+import { gsap } from 'gsap'
 
 const NavigationWrapper = styled.nav`
   top: 20px;
@@ -30,9 +31,23 @@ const Logo = styled.span`
   }
 `;
 
+const WelcomeText = styled.div`
+font-weight: 600;
+  font-size: 50px;
+  margin-left: 50px;
+  letter-spacing: 10px;
+  font-family: 'Anton', sans-serif;
+  text-transform: uppercase;
+  list-style: none;
+  color:  ${COLORS.LIGHT};
+`
+
 const NavigationList = styled.ul`
   list-style: none;
   display: flex;
+  opacity: 0;
+  overflow: 0;
+  display:none;
 `;
 
 const NavigationListItem = styled.li`
@@ -56,9 +71,10 @@ const NavigationListItem = styled.li`
     transition: all .1s ease-in-out;
    
     color:  ${COLORS.LIGHT};
+    opacity: 40%;
     &:hover{
       transform: scale(1.1); 
-    color:  ${COLORS.LIGHTBLUE};
+   opacity: 100%;
   }
   }
 
@@ -66,9 +82,14 @@ const NavigationListItem = styled.li`
 
 
 
-const Navigation = () => (
+const Navigation = () => { 
+  
+  console.log(gsap)
+  
+  return(  
   <NavigationWrapper>
     <Logo><Link to="/">PROTOTYPE<br/><b> ONE</b></Link></Logo>
+    <WelcomeText> Wita cię </WelcomeText>
     <NavigationList>
       <NavigationListItem>
         <Link to="/blog">blog</Link>
@@ -82,5 +103,5 @@ const Navigation = () => (
     </NavigationList>
   </NavigationWrapper>
 );
-
+}
 export default Navigation;
